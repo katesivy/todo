@@ -1,0 +1,49 @@
+ <label>
+            To Do Items:
+            <input
+              name="isGoing"
+              type="checkbox"
+              checked={this.state.isGoing}
+              onChange={this.handleInputChange} />
+          </label>
+          <br />
+
+
+class Form extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        
+       
+      };
+  
+      this.handleInputChange = this.handleInputChange.bind(this);
+    }
+  
+    handleInputChange(event) {
+      const target = event.target;
+      const value = target.name === 'Item' ? target.checked : target.value;
+      const name = target.name;
+  
+      this.setState({
+        [name]: value
+      });
+    }
+  
+    render() {
+      return (
+        <form>
+          <div class="form-group">
+          <label for="exampleFormControlFile1">
+            Next Item:
+            <input
+              name="Item"
+              type="text"
+              value={this.state.todoitem}
+              onChange={this.handleInputChange} />
+          </label>
+          </div>
+        </form>
+      );
+    }
+  }
