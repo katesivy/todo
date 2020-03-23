@@ -32,13 +32,13 @@ class App extends React.Component {
     );
   }
 // store items from input in array using local storage 
-  componentDidMount = () => {
+  async componentDidMount() {
     const todoItems = localStorage.getItem('todoItems');
     const todoList = JSON.parse(todoItems);
     // check timing since render happens before screen updates; maybe assign initial state in constructor instead
-    this.setState({ todoItems: todoList });
-    
+    await this.setState({ todoItems: todoList });
   }
+  
 
   compileList = (todoItem) => {
     // use spread operator or insert props instead into : [] (can omit certain props if needed)
