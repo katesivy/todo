@@ -21,13 +21,13 @@ class Buttons extends React.Component {
                     <div className="col-2 ">
                         <div className="input-group-append mb-d m-2 p-2 flex-wrap">
                             <button className="btn btn-warning border border-dark"
-                                type="button" id="button-addon">Completed Items</button>
+                                type="button" id="button-addon2">Completed Items</button>
                         </div>
                     </div>
                     <div className="col-2 ">
                         <div className="input-group mb-d m-2 p-2">
                             <button className="btn btn-warning border border-dark"
-                                type="button" id="button-addon">Remaining Items</button>
+                                type="button" id="button-addon3">Remaining Items</button>
 
                         </div>
                     </div>

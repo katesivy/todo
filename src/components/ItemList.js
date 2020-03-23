@@ -1,13 +1,14 @@
 import React from 'react';
 
 class ItemList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        };
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //     };
+    
+    
     render() {
-        return (
+        return ( 
             <>
                 <div className="row">
                     <div className="col-6 offset-3 mb-3 mx-auto">
