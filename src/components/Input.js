@@ -9,36 +9,48 @@ class Input extends React.Component {
             // isCompleted: true
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-}
-/*
-- take items from input & put in local storage
-- take items from local storage and make them display in a list
-- cross off items in the list
-    *click button next to item-->toggle the isCompleted state
-    *strike out item onclick
-- show or hide certain items (filter)
-    *click for all items: show all
-    *click for completed items: show completed (state=isCompleted)
-    *click for remaining items: show remaining  (state=!isCompleted)
-*/
+    }
+    /*
+    - take items from input 
+    - put in local storage
+    - take items from local storage and make them display in a list
+    - cross off items in the list
+        *click button next to item-->toggle the isCompleted state
+        *strike out item onclick
+    - show or hide certain items (filter)
+        *click for all items: show all
+        *click for completed items: show completed (state=isCompleted)
+        *click for remaining items: show remaining  (state=!isCompleted)
+    */
 
 
-handleSubmit(e) {
-    e.preventDefault();
-    
-    // console.log({newItem})
-    
-}
+    handleSubmit(e) {
+        e.preventDefault();
+        const newItem = document.getElementById("itemField").value;
+        this.setState(() => {
+            console.log({ todoList: [...this.state.todoList, newItem] })
+            return { todoList: [...this.state.todoList, newItem] };
+        })
+    }
 
-async componentDidMount() {
-    const newItem = document.getElementById("itemField").value;
-    this.setState((prevState) => {
-        // console.log({ todoList: [...this.state.todoList, newItem] } )
-        return { todoList: [...this.state.todoList, newItem] };
-         })
-    await window.localStorage.setItem(this.state.todoList, JSON.stringify(this.state.newItem));
-}
+    componentDidMount() {
+        let newList = JSON.parse(localStorage.getItem('localTodoList')) || [] ;
+        this.setState(
+            {
+            todoList: newList
+            }
+        );  
+    }   
 
+    componentDidUpdate() {
+        window.localStorage.setItem('localTodoList', JSON.stringify(this.state.todoList));
+    }
+    // todoItems.map((todoItem, index) => {
+    //         return (
+    //             <div key={index}>{todoItem.value}
+    //             </div>
+    //          );
+    //  })
     render() {
         return (
             <>
@@ -66,16 +78,16 @@ async componentDidMount() {
             </>
         )
     }
-    
-
-    
 
 
-// here or in <ItemList>: display each newItem in todoList
 
-// create way to cross off items; change value/id/completed?
 
-// toggle function to show/hide crossed off items
+
+    // here or in <ItemList>: display each newItem in todoList
+
+    // create way to cross off items; change value/id/completed?
+
+    // toggle function to show/hide crossed off items
 
 }
 
