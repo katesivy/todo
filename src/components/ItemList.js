@@ -8,7 +8,13 @@ class ItemList extends React.Component {
     }
 
     render() {
-        const todoItem = localStorage.getItem('todoItem')
+        // const todoItems = localStorage.getItem('todoItem')
+        // todoItems.map((todoItem, index) => {
+        //     return (
+        //         <div key={index}>{todoItem.value}
+        //         </div>
+        //     );
+        // })
         return (
             // getItem from localStorage and display in col
             <>
@@ -18,14 +24,13 @@ class ItemList extends React.Component {
                             <div className="input-group">
                                 <div className="input-group-text">
                                     {/* use .map to set array of items with display element */}
-                                
 
 
-                                todoItem.map((todoItem, index) => (<li key={todoItem.id}></li>
-                                ))
 
 
-                                <input type="radio" aria-label="Radio button for following text input" />
+
+
+                                    <input type="radio" aria-label="Radio button for following text input" />
                                     <input type="text" className="form-control" placeholder="to-do item" aria-label="Text input with radio button" />
                                 </div>
                             </div>

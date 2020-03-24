@@ -4,50 +4,77 @@ class Input extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: ''
-            // completed: true
-          };
-          this.handleList = this.handleList.bind(this);
-          this.handleSubmit = this.handleSubmit.bind(this);
-    }
+            todoList: [],
+            // value: ''
+            // isCompleted: true
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
+}
+/*
+- take items from input & put in local storage
+- take items from local storage and make them display in a list
+- cross off items in the list
+    *click button next to item-->toggle the isCompleted state
+    *strike out item onclick
+- show or hide certain items (filter)
+    *click for all items: show all
+    *click for completed items: show completed (state=isCompleted)
+    *click for remaining items: show remaining  (state=!isCompleted)
+*/
+
+
+handleSubmit(e) {
+    e.preventDefault();
+    
+    // console.log({newItem})
+    
+}
+
+async componentDidMount() {
+    const newItem = document.getElementById("itemField").value;
+    this.setState((prevState) => {
+        // console.log({ todoList: [...this.state.todoList, newItem] } )
+        return { todoList: [...this.state.todoList, newItem] };
+         })
+    await window.localStorage.setItem(this.state.todoList, JSON.stringify(this.state.newItem));
+}
+
     render() {
-        // create input area with click handlers
         return (
             <>
-                <div > 
+                <div >
                     <div className="row">
                         <div className="col-6 offset-3">
                             <div className="input-group mb-d">
-                            <form onSubmit={(e) => this.handleSubmit(e)}>
-                                <input 
-                                onChange={(e) =>this.handleList(e)} 
-                                value={this.state.value} 
-                                type="text" 
-                                className="form-control" 
-                                placeholder="type to-do item"
-                                aria-label="text"/> 
-                                <button className="btn btn-danger"
-                                    type="submit" id="button-addon">Add Item</button>
-                                    </form>
+                                <form onSubmit={(e) => this.handleSubmit(e)}>
+                                    <input
+                                        value={this.state.value}
+                                        id="itemField"
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="type to-do item"
+                                        aria-label="text" />
+                                    <button className="btn btn-danger"
+                                        type="submit" id="button-addon">Add Item</button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
 
             </>
         )
     }
-handleList(e) {
-    this.setState({ value: e.target.value });
-}
-handleSubmit(e) {
-    e.preventDefault();
-    // log object (string) being passed in from user
-    console.log(this.state);
-    // send object info to cLF in app.js
-    this.props.compileListFunction(this.state.value);
-}
+    
+
+    
+
+
+// here or in <ItemList>: display each newItem in todoList
+
+// create way to cross off items; change value/id/completed?
+
 // toggle function to show/hide crossed off items
 
 }

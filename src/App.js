@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todoItems: []
+      
     };
   }
 
@@ -21,32 +21,16 @@ class App extends React.Component {
     return (
       <div className="App">
         <Title />
-        {/* grabs info from obj entered in user input */}
-        <Input compileListFunction={this.compileList}></Input>
-     
+        <Input />
         <Buttons />
-        {/* add function to grab info from toggle function  */}
         <ItemList />
 
       </div>
     );
   }
-// store items from input in array using local storage 
-  async componentDidMount() {
-    const todoItems = localStorage.getItem('todoItems');
-    const todoList = JSON.parse(todoItems);
-    // check timing since render happens before screen updates; maybe assign initial state in constructor instead
-    await this.setState({ todoItems: todoList });
-  }
-  
 
-  compileList = (todoItem) => {
-    // use spread operator or insert props instead into : [] (can omit certain props if needed)
-    this.setState({ todoItems : [...this.state.todoItems, todoItem]});
-    localStorage.setItem('todoItem', JSON.stringify(this.state.todoItems));
-    console.log(localStorage.getItem('todoItems')); 
   }
 
-}
+
 
 export default App;
