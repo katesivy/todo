@@ -5,7 +5,8 @@ class Input extends React.Component {
         super(props);
         // function to clear local storage 
         this.state = {
-            todoList: []
+            todoList: [],
+             
             // content: "",
             // value: ''
             // isCompleted: true
@@ -36,6 +37,10 @@ class Input extends React.Component {
         })
     }
 
+    componentDidUpdate() {
+        window.localStorage.setItem('localTodoList', JSON.stringify(this.state.todoList));
+    }
+
     componentDidMount() {
         let newList = JSON.parse(localStorage.getItem('localTodoList')) || [];
         this.setState(
@@ -45,14 +50,17 @@ class Input extends React.Component {
         );
     }
 
-    componentDidUpdate() {
-        window.localStorage.setItem('localTodoList', JSON.stringify(this.state.todoList));
-    }
+    
 
     render() {
-       
-        return (
+        let list = this.state.todoList.map((item, index) => {
+            return <div key={index}></div>
+          });
+         
+         return (
             <>
+          
+          <div> {list}</div>
             <div className="row">
                     <div className="col-6 offset-3">
                         <div className="input-group mb-d">
@@ -66,10 +74,13 @@ class Input extends React.Component {
                                     aria-label="text" />
                                 <button className="btn btn-danger"
                                     type="submit" id="button-addon">Add Item</button>
+                                     
                             </form>
+                            
                         </div>
                     </div>
                 </div>
+                
            </>
         )
     }
