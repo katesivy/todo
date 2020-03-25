@@ -1,4 +1,5 @@
 import React from 'react';
+import ItemList from './ItemList';
 
 class Input extends React.Component {
     constructor(props) {
@@ -30,8 +31,15 @@ class Input extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const newItem = document.getElementById("itemField").value;
-        this.setState(() => {
+        const newItem = {
+            
+            text: document.getElementById("itemField").value,
+            id: Date.now(),
+            status: 'inProgress',
+            
+
+        }
+            this.setState(() => {
             console.log({ todoList: [...this.state.todoList, newItem] })
             return { todoList: [...this.state.todoList, newItem] };
         })
@@ -53,14 +61,12 @@ class Input extends React.Component {
     
 
     render() {
-        let list = this.state.todoList.map((item, index) => {
-            return <div key={index}></div>
-          });
+        
          
          return (
             <>
+         <ItemList todoList={this.state.todoList}/>
           
-          <div> {list}</div>
             <div className="row">
                     <div className="col-6 offset-3">
                         <div className="input-group mb-d">

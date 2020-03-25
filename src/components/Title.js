@@ -14,12 +14,6 @@ class Title extends React.Component {
         return (
            <>
              <div className="Container">
-                <div className="row ">
-                    <div className="col-6 offset-3 md">
-
-                    </div>
-                    </div>
-
           
                 <div className="row ">
                     <div className="col-6 offset-3 md">
