@@ -12,19 +12,6 @@ class Input extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         
     }
-    /*
-    - take items from input 
-    ->hide previous item from input field
-    - put in local storage
-    - take items from local storage and make them display in a list
-    -> cross off items in the list
-        *click button next to item-->toggle the isCompleted state
-        *strike out item onclick
-    -> show or hide certain items (filter)
-        *click for all items: show all
-        *click for completed items: show completed (state=isCompleted)
-        *click for remaining items: show remaining  (state=!isCompleted)
-    */
 
 
     handleSubmit(e) {
@@ -33,13 +20,14 @@ class Input extends React.Component {
             text: document.getElementById("itemField").value,
             id: Date.now(),
             status: 'inProgress',
-            }
+        }
 
-            this.setState(() => {
+        this.setState(() => {
             console.log({ todoList: [...this.state.todoList, newItem] })
             return { todoList: [...this.state.todoList, newItem] };
         })
     }
+
 
     componentDidUpdate() {
         window.localStorage.setItem('localTodoList', JSON.stringify(this.state.todoList));
@@ -47,48 +35,72 @@ class Input extends React.Component {
 
     componentDidMount() {
         let newList = JSON.parse(localStorage.getItem('localTodoList')) || [];
-        this.setState(
-            {
-                todoList: newList
-            }
-        );
+        this.setState({
+            todoList: newList
+        });
     }
 
     clearAll() {
         this.setState({
-            todoList: [],
+            todoList: []
         });
     }
 
+    handleCheck(e) {
+        // map through and change status
+    //     this.todoList.map((item) =>
+    //     key={todoList.id}
+    //      if (e.target.id === todoList.id) {
+    //     this.newItem.setState({ 
+    //         status: 'completed' 
+    //     });
+    //      }
+    //      console.log(newItem);
+    // )
+     
+    
+    console.log(e.target.id);
+    console.log(e.target.checked);
+    }
+
+    
+
     render() {
-        
-         
-         return (
+
+
+        return (
             <>
 
-            <div className="row">
+
+                <div className="row">
                     <div className="col-6 offset-3">
-                        <div className="input-group mb-d">
+                        <div className="input-group mb-d  justify-content-start mx-auto">
                             <form onSubmit={(e) => this.handleSubmit(e)}>
                                 <input
                                     value={this.state.value}
                                     id="itemField"
                                     type="text"
+
                                     className="form-control"
                                     placeholder="type to do item"
-                                    aria-label="text" />
+                                    aria-label="text"
+                                    onChange={this.handleChange} />
                                 <button className="btn btn-danger"
-                                    type="submit" id="button-addon">Add Item</button>
-                                     
+                                    type="submit"
+                                    id="button-addon">Add Item</button>
+
+            
                             </form>
-                            <ItemList todoList={this.state.todoList}/>
+                            <ItemList 
+                                todoList={this.state.todoList} 
+                                parentFunction={this.handleCheck.bind(this)}    
+                                />
                         </div>
                     </div>
                 </div>
-                <Buttons parentFunction={this.clearAll.bind(this)}/>
+                <Buttons parentFunction={this.clearAll.bind(this)} />
 
-                
-           </>
+            </>
         )
     }
 
@@ -105,4 +117,29 @@ class Input extends React.Component {
 }
 
 
-export default Input;   
+export default Input;
+
+
+    // const styles = StyleSheet.create({
+    //     lineThrough:  {
+    //     textDecoration: 'line-through',
+    //     textDecorationStyle: 'solid',
+    //     textDecorationColor: 'grey',
+    // }  
+    // })
+
+
+
+    /*
+    - take items from input 
+    ->hide previous item from input field
+    - put in local storage
+    - take items from local storage and make them display in a list
+    -> cross off items in the list
+        *click button next to item-->toggle the isCompleted state
+        *strike out item onclick
+    -> show or hide certain items (filter)
+        *click for all items: show all
+        *click for completed items: show completed (state=isCompleted)
+        *click for remaining items: show remaining  (state=!isCompleted)
+    */

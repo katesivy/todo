@@ -15,8 +15,8 @@ class Title extends React.Component {
            <>
              <div className="Container">
           
-                <div className="row ">
-                    <div className="col-6 offset-3 md">
+                <div className="row justify-content-md-center ">
+                    <div className="col-6 offset-3 md p-4">
                         <h1>To Do List</h1>
                     </div>
 
@@ -29,10 +29,3 @@ class Title extends React.Component {
 }
 
 export default Title;
-
-{/*                 
-                <div className="row justify-content-md-center">
-                    <div className="col xs lg="> </div>
-                    <div className="col xs lg="><h1>To Do List</h1> </div>
-                    <div className="col xs lg"></div>
-                </div> */}
