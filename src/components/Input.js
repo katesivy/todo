@@ -1,5 +1,6 @@
 import React from 'react';
 import ItemList from './ItemList';
+import Buttons from './Buttons';
 
 class Input extends React.Component {
     constructor(props) {
@@ -7,18 +8,15 @@ class Input extends React.Component {
         // function to clear local storage 
         this.state = {
             todoList: [],
-             
-            // content: "",
-            // value: ''
-            // isCompleted: true
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        
     }
     /*
     - take items from input 
     ->hide previous item from input field
     - put in local storage
-    -> take items from local storage and make them display in a list
+    - take items from local storage and make them display in a list
     -> cross off items in the list
         *click button next to item-->toggle the isCompleted state
         *strike out item onclick
@@ -32,13 +30,11 @@ class Input extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const newItem = {
-            
             text: document.getElementById("itemField").value,
             id: Date.now(),
             status: 'inProgress',
-            
+            }
 
-        }
             this.setState(() => {
             console.log({ todoList: [...this.state.todoList, newItem] })
             return { todoList: [...this.state.todoList, newItem] };
@@ -58,15 +54,18 @@ class Input extends React.Component {
         );
     }
 
-    
+    clearAll() {
+        this.setState({
+            todoList: [],
+        });
+    }
 
     render() {
         
          
          return (
             <>
-         <ItemList todoList={this.state.todoList}/>
-          
+
             <div className="row">
                     <div className="col-6 offset-3">
                         <div className="input-group mb-d">
@@ -82,10 +81,12 @@ class Input extends React.Component {
                                     type="submit" id="button-addon">Add Item</button>
                                      
                             </form>
-                            
+                            <ItemList todoList={this.state.todoList}/>
                         </div>
                     </div>
                 </div>
+                <Buttons parentFunction={this.clearAll.bind(this)}/>
+
                 
            </>
         )

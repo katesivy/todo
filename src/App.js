@@ -3,7 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Title from './components/Title';
 import Input from './components/Input';
-import Buttons from './components/Buttons';
+
 
 
 
@@ -22,7 +22,7 @@ class App extends React.Component {
       <div className="App">
         <Title />
         <Input />
-        <Buttons />
+        
         
 
       </div>
