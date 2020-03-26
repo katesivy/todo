@@ -3,7 +3,7 @@ import React, { useImperativeHandle } from 'react';
 class ItemList extends React.Component {
     constructor(props) {
         super(props);
-        // this.handleCheck = this.handleCheck.bind(this);
+        
        
     }
 
@@ -17,7 +17,7 @@ class ItemList extends React.Component {
                <input type="checkbox" 
                className="checkbox" 
                value={item.text} 
-               checked={item.checked} 
+               checked={item.status} 
                id={item.id} 
                onClick={this.props.parentFunction} /> 
                 <><span className="col-12 justify-content-start bg-light">

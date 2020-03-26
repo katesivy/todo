@@ -5,9 +5,9 @@ import Buttons from './Buttons';
 class Input extends React.Component {
     constructor(props) {
         super(props);
-        // function to clear local storage 
         this.state = {
             todoList: [],
+            view: 'all'
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         
@@ -19,7 +19,7 @@ class Input extends React.Component {
         const newItem = {
             text: document.getElementById("itemField").value,
             id: Date.now(),
-            status: 'inProgress',
+            status: false,
         }
 
         this.setState(() => {
@@ -47,23 +47,33 @@ class Input extends React.Component {
     }
 
     handleCheck(e) {
-        // map through and change status
-    //     this.todoList.map((item) =>
-    //     key={todoList.id}
-    //      if (e.target.id === todoList.id) {
-    //     this.newItem.setState({ 
-    //         status: 'completed' 
-    //     });
-    //      }
-    //      console.log(newItem);
-    // )
-     
-    
-    console.log(e.target.id);
-    console.log(e.target.checked);
-    }
 
+
+     let checkedItems = this.state.todoList.map((item) => {
+         if (Number(e.target.id) === item.id) {
+            item.status = e.target.checked
+         }  
+         return item;
+         });
+     
+         this.setState({
+             todoList: checkedItems
+         });
+
+
+    // console.log(checkedItems);
+    // console.log(e.target.id);
+    // console.log(e.target.checked);
     
+    }
+ 
+updateView(e){
+// take e.target.id for info for view
+// setstate view = id
+console.log(e.target.id)
+}
+
+
 
     render() {
 
@@ -80,7 +90,6 @@ class Input extends React.Component {
                                     value={this.state.value}
                                     id="itemField"
                                     type="text"
-
                                     className="form-control"
                                     placeholder="type to do item"
                                     aria-label="text"
@@ -93,12 +102,15 @@ class Input extends React.Component {
                             </form>
                             <ItemList 
                                 todoList={this.state.todoList} 
-                                parentFunction={this.handleCheck.bind(this)}    
+                                parentFunction={this.handleCheck.bind(this)}   
+                                
                                 />
                         </div>
                     </div>
                 </div>
-                <Buttons parentFunction={this.clearAll.bind(this)} />
+                <Buttons parentFunction = {this.clearAll.bind(this)}  
+                    updateView={this.updateView.bind(this)} 
+                />
 
             </>
         )

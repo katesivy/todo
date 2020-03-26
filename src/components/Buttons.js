@@ -21,26 +21,26 @@ class Buttons extends React.Component {
                     <div className="col-3 ">
                         <div className="input-group-append mb-d m-2 p-2">
                             <button 
-                                onClick ={this.handleClickAll}
+                                onClick ={this.props.updateView}
                                 className="btn btn-warning border border-dark"
-                                type="button" id="button-addon">All Items</button>
+                                type="button" id="all">All Items</button>
                         </div>
                     </div>
 
                     <div className="col-3 ">
                         <div className="input-group-append mb-d m-2 p-2 flex-wrap">
                             <button 
-                                onClick ={this.handleClickComplete}
+                                onClick ={this.props.updateView}
                                 className="btn btn-warning border border-dark"
-                                type="button" id="button-addon2">Completed</button>
+                                type="button" id="completed">Completed</button>
                         </div>
                     </div>
                     <div className="col-3 ">
                         <div className="input-group mb-d m-2 p-2">
                             <button 
-                                onClick ={this.handleClickRemaining}
+                                onClick ={this.props.updateView}
                                 className="btn btn-warning border border-dark"
-                                type="button" id="button-addon3">Remaining</button>
+                                type="button" id="remaining">Remaining</button>
                              </div>
                         </div>
                         <div className="col-3 ">
