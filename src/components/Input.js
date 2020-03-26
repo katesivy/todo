@@ -10,7 +10,7 @@ class Input extends React.Component {
             view: 'all'
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        
+
     }
 
 
@@ -47,41 +47,41 @@ class Input extends React.Component {
     }
 
     handleCheck(e) {
-
-
-     let checkedItems = this.state.todoList.map((item) => {
-         if (Number(e.target.id) === item.id) {
-            item.status = e.target.checked
-         }  
-         return item;
-         });
-     
-         this.setState({
-             todoList: checkedItems
-         });
-
-
-    // console.log(checkedItems);
-    // console.log(e.target.id);
-    // console.log(e.target.checked);
-    
+        let checkedItems = this.state.todoList.map((item) => {
+            if (Number(e.target.id) === item.id) {
+                item.status = e.target.checked
+            }
+            return item;
+        });
+        this.setState({
+            todoList: checkedItems
+        });
+        console.log(checkedItems)
     }
- 
-updateView(e){
-// take e.target.id for info for view
-// setstate view = id
-console.log(e.target.id)
-}
+
+    async updateButtonsView(e) {
+        let updateList = this.state.view;
+        if (e.target.id === 'all') {
+            updateList = 'all'
+        } else if
+            (e.target.id === 'remaining') {
+            updateList = 'remaining'
+        } else if
+            (e.target.id === 'completed') {
+            updateList =  'completed'
+        }
+        await this.setState({
+            view: updateList
+        })
+        
+        console.log(this.state)
+    };
 
 
 
     render() {
-
-
         return (
             <>
-
-
                 <div className="row">
                     <div className="col-6 offset-3">
                         <div className="input-group mb-d  justify-content-start mx-auto">
@@ -98,18 +98,18 @@ console.log(e.target.id)
                                     type="submit"
                                     id="button-addon">Add Item</button>
 
-            
+
                             </form>
-                            <ItemList 
-                                todoList={this.state.todoList} 
-                                parentFunction={this.handleCheck.bind(this)}   
-                                
-                                />
+                            <ItemList
+                                todoList={this.state.todoList}
+                                parentFunction={this.handleCheck.bind(this)}
+
+                            />
                         </div>
                     </div>
                 </div>
-                <Buttons parentFunction = {this.clearAll.bind(this)}  
-                    updateView={this.updateView.bind(this)} 
+                <Buttons parentFunction={this.clearAll.bind(this)}
+                    updateButtonsView={this.updateButtonsView.bind(this)}
                 />
 
             </>
@@ -142,16 +142,16 @@ export default Input;
 
 
 
-    /*
-    - take items from input 
-    ->hide previous item from input field
-    - put in local storage
-    - take items from local storage and make them display in a list
-    -> cross off items in the list
-        *click button next to item-->toggle the isCompleted state
-        *strike out item onclick
-    -> show or hide certain items (filter)
-        *click for all items: show all
-        *click for completed items: show completed (state=isCompleted)
-        *click for remaining items: show remaining  (state=!isCompleted)
-    */
+/*
+- take items from input
+->hide previous item from input field
+- put in local storage
+- take items from local storage and make them display in a list
+-> cross off items in the list
+    *click button next to item-->toggle the isCompleted state
+    *strike out item onclick
+-> show or hide certain items (filter)
+    *click for all items: show all
+    *click for completed items: show completed (state=isCompleted)
+    *click for remaining items: show remaining  (state=!isCompleted)
+*/

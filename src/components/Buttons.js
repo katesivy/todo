@@ -3,14 +3,7 @@ import React from 'react';
 class Buttons extends React.Component {
     constructor(props) {
         super(props);
-        // this.handleClickClear = this.handleClickClear.bind(this);
-        
-        }
-
-
-// handleClickClear(e) {
-//     this.props.parentFunction();
-// }
+         }
 
 
     render() {
@@ -21,7 +14,7 @@ class Buttons extends React.Component {
                     <div className="col-3 ">
                         <div className="input-group-append mb-d m-2 p-2">
                             <button 
-                                onClick ={this.props.updateView}
+                                onClick ={this.props.updateButtonsView}
                                 className="btn btn-warning border border-dark"
                                 type="button" id="all">All Items</button>
                         </div>
@@ -30,7 +23,7 @@ class Buttons extends React.Component {
                     <div className="col-3 ">
                         <div className="input-group-append mb-d m-2 p-2 flex-wrap">
                             <button 
-                                onClick ={this.props.updateView}
+                                onClick ={this.props.updateButtonsView}
                                 className="btn btn-warning border border-dark"
                                 type="button" id="completed">Completed</button>
                         </div>
@@ -38,7 +31,7 @@ class Buttons extends React.Component {
                     <div className="col-3 ">
                         <div className="input-group mb-d m-2 p-2">
                             <button 
-                                onClick ={this.props.updateView}
+                                onClick ={this.props.updateButtonsView}
                                 className="btn btn-warning border border-dark"
                                 type="button" id="remaining">Remaining</button>
                              </div>
