@@ -43,13 +43,13 @@ class ItemList extends React.Component {
         return (
 
             <>
-                <div className="row  justify-content-start">
+                {/* <div className="row  justify-content-start"> */}
                     <div className="col-12 justify-content-start">
                         <ul >
                             {list}
                         </ul>
                     </div>
-                </div>
+                {/* </div> */}
 
             </>
         )

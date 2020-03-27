@@ -17,7 +17,7 @@ class Buttons extends React.Component {
                     </div>
                 </div>
                 <div className="row d-flex">
-                    <div className="col-3 ">
+                    <div className="col-4 ">
                         <div className="input-group-append mb-d m-2 p-2">
                             <button
                                 onClick={this.props.updateButtonsView}
@@ -26,7 +26,7 @@ class Buttons extends React.Component {
                         </div>
                     </div>
 
-                    <div className="col-3 ">
+                    <div className="col-4 ">
                         <div className="input-group-append mb-d m-2 p-2 flex-wrap">
                             <button
                                 onClick={this.props.updateButtonsView}
@@ -34,7 +34,7 @@ class Buttons extends React.Component {
                                 type="button" id="completed">Completed</button>
                         </div>
                     </div>
-                    <div className="col-3 ">
+                    <div className="col-4 ">
                         <div className="input-group mb-d m-2 p-2">
                             <button
                                 onClick={this.props.updateButtonsView}
@@ -49,9 +49,9 @@ class Buttons extends React.Component {
                         <div className="col-6 ">
                             <div className="input-group-append mb-d m-2 p-2">
                                 <button
-                                    // onClick={this.props.updateButtonsView}
+                                    onClick={this.props.handleCheckAll}
                                     className="btn btn-dark border border-dark"
-                                    type="button" id="all">Check All</button>
+                                    type="button" id="allItems">Check All</button>
                             </div>
                         </div>
                         <div className="col-6">

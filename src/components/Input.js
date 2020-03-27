@@ -10,9 +10,9 @@ class Input extends React.Component {
             view: 'all',
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-       
+
     }
-    
+
     handleSubmit(e) {
         e.preventDefault();
         const newItem = {
@@ -23,8 +23,9 @@ class Input extends React.Component {
 
         this.setState(() => {
             console.log({ todoList: [...this.state.todoList, newItem] })
-            return { todoList: [...this.state.todoList, newItem],
-                   
+            return {
+                todoList: [...this.state.todoList, newItem],
+
             };
         })
     }
@@ -59,6 +60,17 @@ class Input extends React.Component {
         });
         console.log(checkedItems)
     }
+    async handleCheckAll(e) {
+        console.log('clicked')
+        let allItems = this.state.todoList.map((item) => {
+            item.status = true
+            return item;
+        });
+        await this.setState({
+            todoList: allItems
+        });
+        console.log('todoList');
+    }
 
     async updateButtonsView(e) {
         let updateList = this.state.view;
@@ -69,12 +81,12 @@ class Input extends React.Component {
             updateList = 'remaining'
         } else if
             (e.target.id === 'completed') {
-            updateList =  'completed'
+            updateList = 'completed'
         }
         await this.setState({
             view: updateList
         })
-        
+
         // console.log(this.state)
     };
 
@@ -111,6 +123,7 @@ class Input extends React.Component {
                 </div>
                 <Buttons parentFunction={this.clearAll.bind(this)}
                     updateButtonsView={this.updateButtonsView.bind(this)}
+                    handleCheckAll={this.handleCheckAll.bind(this)}
                 />
 
             </>
