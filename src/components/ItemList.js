@@ -9,8 +9,6 @@ class ItemList extends React.Component {
     // if this.props.view == all, set proxy array to this.props.todoList
     // if vew == remaining, set proxy to filtered array of this.props.todolist
 
-
-
     render() {
 
 
