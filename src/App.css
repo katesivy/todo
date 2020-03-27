@@ -6,4 +6,10 @@
 .Title {
   background-color: darkseagreen;
 }
+/* 
+{Item.id}.map(({item} ) =>
+        key=
 
+        ):
+
+        if (this.target.id === e.target.id) */

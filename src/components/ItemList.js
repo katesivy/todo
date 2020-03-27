@@ -3,34 +3,53 @@ import React from 'react';
 class ItemList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            todoList: []
-        };
     }
 
+    // create proxy array []
+    // if this.props.view == all, set proxy array to this.props.todoList
+    // if vew == remaining, set proxy to filtered array of this.props.todolist
+
+
+
     render() {
-        let list = this.state.todoList.map((item, index) => {
-            return <div key={index}></div>
-          });
+
+
+        let newArray = this.props.todoList;
+
+        if (this.props.view === 'all') {
+            newArray = this.props.todoList
+        } else if (this.props.view === 'remaining') {
+            newArray = this.props.todoList.filter(item => item.status === false)
+        } else if (this.props.view === 'completed') {
+            newArray = this.props.todoList.filter(item => item.status === true)
+        }
+        console.log(newArray)
+
+
+    // change props to proxy array in map below
+        let list = newArray.map((item, index) => {
+            return <div key={item.id} >
+                <input type="checkbox"
+                    className="checkbox"
+                    value={item.text}
+                    checked={item.status}
+                    id={item.id}
+                    onClick={this.props.parentFunction} />
+                <><span className="col-12 justify-content-start bg-light">
+                    {item.text}
+                </span>
+                </>
+            </div>
+        });
 
         return (
-             <>
-           
-        {/* let newList = document.setElementById("itemList").{index} */}
-                <div className="row">
-                    <div className="col-6 offset-3 mb-3 mx-auto">
-                        <div className="input-group flex-wrap"> 
-                            <div className="input-group">
-                                {/* <div className="input-group-text"> */}
 
-                               
-                              
-                                    <input type="radio" aria-label="Radio button for following text input" />
-                                    <input type="text" id="itemList" className="form-control" placeholder="to do item" aria-label="Text input with radio button"/>
-                                    
-                                {/* </div> */}
-                            </div>
-                        </div>
+            <>
+                <div className="row  justify-content-start">
+                    <div className="col-12 justify-content-start">
+                        <ul >
+                            {list}
+                        </ul>
                     </div>
                 </div>
 
@@ -44,3 +63,4 @@ class ItemList extends React.Component {
 
 
 export default ItemList;
+// {() => {console.log("checked")}}

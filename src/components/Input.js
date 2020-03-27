@@ -1,41 +1,41 @@
 import React from 'react';
+import ItemList from './ItemList';
+import Buttons from './Buttons';
 
 class Input extends React.Component {
     constructor(props) {
         super(props);
-        // function to clear local storage 
         this.state = {
             todoList: [],
-             
-            // content: "",
-            // value: ''
-            // isCompleted: true
+            view: 'all',
+            //  newItem: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        //  this.handleChange = this.handleChange.bind(this);
     }
-    /*
-    - take items from input 
-    ->hide previous item from input field
-    - put in local storage
-    -> take items from local storage and make them display in a list
-    -> cross off items in the list
-        *click button next to item-->toggle the isCompleted state
-        *strike out item onclick
-    -> show or hide certain items (filter)
-        *click for all items: show all
-        *click for completed items: show completed (state=isCompleted)
-        *click for remaining items: show remaining  (state=!isCompleted)
-    */
-
+    
+    // handleChange(e) {
+        
+    //     this.setState = {
+    //         newItem: e.target.value
+    //     }
+    // }
+            
 
     handleSubmit(e) {
         e.preventDefault();
-        const newItem = document.getElementById("itemField").value;
+        const newItem = {
+            text: document.getElementById("itemField").value,
+            id: Date.now(),
+            status: false,
+        }
+
         this.setState(() => {
             console.log({ todoList: [...this.state.todoList, newItem] })
-            return { todoList: [...this.state.todoList, newItem] };
+            return { todoList: [...this.state.todoList, newItem]};
         })
     }
+
 
     componentDidUpdate() {
         window.localStorage.setItem('localTodoList', JSON.stringify(this.state.todoList));
@@ -43,27 +43,56 @@ class Input extends React.Component {
 
     componentDidMount() {
         let newList = JSON.parse(localStorage.getItem('localTodoList')) || [];
-        this.setState(
-            {
-                todoList: newList
-            }
-        );
+        this.setState({
+            todoList: newList
+        });
     }
 
-    
+    clearAll() {
+        this.setState({
+            todoList: []
+        });
+    }
+
+    handleCheck(e) {
+        let checkedItems = this.state.todoList.map((item) => {
+            if (Number(e.target.id) === item.id) {
+                item.status = e.target.checked
+            }
+            return item;
+        });
+        this.setState({
+            todoList: checkedItems
+        });
+        console.log(checkedItems)
+    }
+
+    async updateButtonsView(e) {
+        let updateList = this.state.view;
+        if (e.target.id === 'all') {
+            updateList = 'all'
+        } else if
+            (e.target.id === 'remaining') {
+            updateList = 'remaining'
+        } else if
+            (e.target.id === 'completed') {
+            updateList =  'completed'
+        }
+        await this.setState({
+            view: updateList
+        })
+        
+        // console.log(this.state)
+    };
+
+
 
     render() {
-        let list = this.state.todoList.map((item, index) => {
-            return <div key={index}></div>
-          });
-         
-         return (
+        return (
             <>
-          
-          <div> {list}</div>
-            <div className="row">
+                <div className="row">
                     <div className="col-6 offset-3">
-                        <div className="input-group mb-d">
+                        <div className="input-group mb-d  justify-content-start mx-auto">
                             <form onSubmit={(e) => this.handleSubmit(e)}>
                                 <input
                                     value={this.state.value}
@@ -71,17 +100,27 @@ class Input extends React.Component {
                                     type="text"
                                     className="form-control"
                                     placeholder="type to do item"
-                                    aria-label="text" />
+                                    aria-label="text"
+                                    onChange={this.handleChange} />
                                 <button className="btn btn-danger"
-                                    type="submit" id="button-addon">Add Item</button>
-                                     
+                                    type="submit"
+                                    id="button-addon">Add Item</button>
+
+
                             </form>
-                            
+                            <ItemList
+                                todoList={this.state.todoList}
+                                parentFunction={this.handleCheck.bind(this)}
+                                view={this.state.view}
+                            />
                         </div>
                     </div>
                 </div>
-                
-           </>
+                <Buttons parentFunction={this.clearAll.bind(this)}
+                    updateButtonsView={this.updateButtonsView.bind(this)}
+                />
+
+            </>
         )
     }
 
@@ -98,4 +137,29 @@ class Input extends React.Component {
 }
 
 
-export default Input;   
+export default Input;
+
+
+    // const styles = StyleSheet.create({
+    //     lineThrough:  {
+    //     textDecoration: 'line-through',
+    //     textDecorationStyle: 'solid',
+    //     textDecorationColor: 'grey',
+    // }  
+    // })
+
+
+
+/*
+- take items from input
+->hide previous item from input field
+- put in local storage
+- take items from local storage and make them display in a list
+-> cross off items in the list
+    *click button next to item-->toggle the isCompleted state
+    *strike out item onclick
+-> show or hide certain items (filter)
+    *click for all items: show all
+    *click for completed items: show completed (state=isCompleted)
+    *click for remaining items: show remaining  (state=!isCompleted)
+*/
