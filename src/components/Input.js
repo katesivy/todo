@@ -74,7 +74,7 @@ class Input extends React.Component {
             view: updateList
         })
         
-        console.log(this.state)
+        // console.log(this.state)
     };
 
 
@@ -103,7 +103,7 @@ class Input extends React.Component {
                             <ItemList
                                 todoList={this.state.todoList}
                                 parentFunction={this.handleCheck.bind(this)}
-
+                                view={this.state.view}
                             />
                         </div>
                     </div>
