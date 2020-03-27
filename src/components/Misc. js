@@ -1,49 +1,26 @@
- <label>
-            To Do Items:
-            <input
-              name="isGoing"
-              type="checkbox"
-              checked={this.state.isGoing}
-              onChange={this.handleInputChange} />
-          </label>
-          <br />
+  // handleCheckAll(e) {
+    //     console.log('clicked')
+    //     let allItems = this.state.todoList.map((item) => {
+    //         item.status = e.target.checked
+    //         return item;
+    //     });
+    //     this.setState({
+    //         todoList: allItems
+    //     });
+    //     console.log('todoList');
+    // }
+
+    // parentFunction={this.handleCheckAll.bind(this)}
 
 
-class Form extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
+
+    // handleChange(e) {
         
-       
-      };
-  
-      this.handleInputChange = this.handleInputChange.bind(this);
-    }
-  
-    handleInputChange(event) {
-      const target = event.target;
-      const value = target.name === 'Item' ? target.checked : target.value;
-      const name = target.name;
-  
-      this.setState({
-        [name]: value
-      });
-    }
-  
-    render() {
-      return (
-        <form>
-          <div class="form-group">
-          <label for="exampleFormControlFile1">
-            Next Item:
-            <input
-              name="Item"
-              type="text"
-              value={this.state.todoitem}
-              onChange={this.handleInputChange} />
-          </label>
-          </div>
-        </form>
-      );
-    }
-  }
+    //     this.setState = {
+    //         newItem: e.target.value
+    //     }
+    // }
+
+     //  this.handleChange = this.handleChange.bind(this);
+
+            //  newItem: ''
