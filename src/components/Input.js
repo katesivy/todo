@@ -7,12 +7,20 @@ class Input extends React.Component {
         super(props);
         this.state = {
             todoList: [],
-            view: 'all'
+            view: 'all',
+            //  newItem: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-
+        //  this.handleChange = this.handleChange.bind(this);
     }
-
+    
+    // handleChange(e) {
+        
+    //     this.setState = {
+    //         newItem: e.target.value
+    //     }
+    // }
+            
 
     handleSubmit(e) {
         e.preventDefault();
@@ -24,7 +32,7 @@ class Input extends React.Component {
 
         this.setState(() => {
             console.log({ todoList: [...this.state.todoList, newItem] })
-            return { todoList: [...this.state.todoList, newItem] };
+            return { todoList: [...this.state.todoList, newItem]};
         })
     }
 

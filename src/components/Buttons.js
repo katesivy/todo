@@ -36,16 +36,29 @@ class Buttons extends React.Component {
                                 type="button" id="remaining">Remaining</button>
                              </div>
                         </div>
-                        <div className="col-3 ">
-                        <div className="input-group mb-d m-2 p-2">
-                            <button 
-                                onClick={this.props.parentFunction}
-                                className="btn btn-dark border border-dark"
-                                type="button" id="button-addon3">Clear All</button>
-
-                        </div>
+                       
                     </div>
-                    </div>
+                     <div>
+<div className="row ">
+    <div className="col-6 ">
+        <div className="input-group-append mb-d m-2 p-2">
+            <button
+                // onClick={this.props.updateButtonsView}
+                className="btn btn-dark border border-dark"
+                type="button" id="all">Check All</button>
+        </div>
+    </div>
+    <div className="col-6">
+        <div className="input-group mb-d m-2 p-2">
+            <button
+                onClick={this.props.parentFunction}
+                className="btn btn-dark border border-dark"
+                type="button" id="button-addon3">Clear All</button>
+        </div>
+    </div>
+</div>
+</div>
+ 
 
 
 
