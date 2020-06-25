@@ -95,9 +95,15 @@ class Input extends React.Component {
     render() {
         return (
             <>
-                <div className="row">
-                    <div className="col-6 offset-3">
-                        <div className="input-group mb-d  justify-content-start mx-auto">
+                <div className="row text-center ">
+
+                    <div className="col-6 offset-3 p-5">
+                        <h1>To Do List</h1>
+                    </div>
+                    </div>
+                    <div className="row text-center ">
+
+                    <div className="col-6 offset-3 text-center">
                             <form onSubmit={(e) => this.handleSubmit(e)}>
                                 <input
                                     value={this.state.value}
@@ -118,9 +124,10 @@ class Input extends React.Component {
                                 parentFunction={this.handleCheck.bind(this)}
                                 view={this.state.view}
                             />
-                        </div>
+                    
                     </div>
                 </div>
+                
                 <Buttons parentFunction={this.clearAll.bind(this)}
                     updateButtonsView={this.updateButtonsView.bind(this)}
                     handleCheckAll={this.handleCheckAll.bind(this)}

@@ -1,36 +1,18 @@
 import React from 'react';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Title from './components/Title';
 import Input from './components/Input';
+import Buttons from './components/Input';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
+export default function App() {
 
 
-
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
+  return (
+    <div className="App">
+      <Input />
       
-    };
-  }
+    </div>
+  )
+}
 
-
-  render() {
-    return (
-      <div className="App">
-        <Title />
-        <Input />
-        
-        
-
-      </div>
-    );
-  }
-
-  }
-
-
-
-export default App;
