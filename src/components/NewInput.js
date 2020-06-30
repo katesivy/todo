@@ -22,69 +22,62 @@ export default function Input(props) {
     }
 
 
-    // useEffect(() => {
-    //     window.localStorage.setItem('localTodoList', JSON.stringify(this.state.todoList));
-    // });
+    useEffect(() => {
+        window.localStorage.setItem('localTodoList', JSON.stringify(this.state.todoList));
+    });
 
-    // useEffect(() => {
-    //     let newList = JSON.parse(localStorage.getItem('localTodoList')) || [];
-    //     setTodoList: newList
-    // });
+    useEffect(() => {
+        let newList = JSON.parse(localStorage.getItem('localTodoList')) || [];
+        setTodoList: newList
+    });
 
-    // clearAll(() => {
-    //     setTodoList: []
-    // })
+    clearAll(() => {
+        setTodoList: []
+    })
 
-    // handleCheck((e) => {
-    //     let checkedItems = this.state.todoList.map((item) => {
-    //         if (Number(e.target.id) === item.id) {
-    //             item.status = e.target.checked
-    //         }
-    //         return item;
-    //     });
-    //     setTodoList: checkedItems
-    //     console.log(checkedItems)
-    // });
+    handleCheck((e) => {
+        let checkedItems = this.state.todoList.map((item) => {
+            if (Number(e.target.id) === item.id) {
+                item.status = e.target.checked
+            }
+            return item;
+        });
+        setTodoList: checkedItems
+        console.log(checkedItems)
+    });
 
-    // async function handleCheckAll(e){
-    //     console.log('clicked')
-    //     let allItems = this.state.todoList.map((item) => {
-    //         item.status = true
-    //         return item;
-    //     });
-    //     // await setTodoList: allItems
-    //     console.log('todoList');
-    // }
+    async function handleCheckAll(e){
+        console.log('clicked')
+        let allItems = this.state.todoList.map((item) => {
+            item.status = true
+            return item;
+        });
+        // await setTodoList: allItems
+        console.log('todoList');
+    }
 
-    // async function updateButtonsView(e) {
-    //     let updateList = this.state.view;
-    //     if (e.target.id === 'all') {
-    //         updateList = 'all'
-    //     } else if
-    //         (e.target.id === 'remaining') {
-    //         updateList = 'remaining'
-    //     } else if
-    //         (e.target.id === 'completed') {
-    //         updateList = 'completed'
-    //     }
-    //     // await setView: updateList;
+    async function updateButtonsView(e) {
+        let updateList = this.state.view;
+        if (e.target.id === 'all') {
+            updateList = 'all'
+        } else if
+            (e.target.id === 'remaining') {
+            updateList = 'remaining'
+        } else if
+            (e.target.id === 'completed') {
+            updateList = 'completed'
+        }
+        // await setView: updateList;
       
 
-    //     // console.log(this.state)
-    // };
+        // console.log(this.state)
+    };
 
 
 
    
         return (
             <>
-                {/* <div className="Container"> */}
-                <div className="row justify-content-md-center ">
-                    <div className="col-6 offset-3">
-                        <h1>To Do List</h1>
-                    </div>
-                </div>
-
                 <div className="row">
                     <div className="col-6 offset-3 ">
                         <div className="input-group justify-content-start
@@ -116,26 +109,19 @@ export default function Input(props) {
                     </div>
                 </div>
 
-
-
-                {/* <div className="col-4 "> */}
                 <div className="input-group-append mb-d m-2 p-2">
                     <button
                         onClick={this.props.updateButtonsView}
                         className="btn btn-warning border border-dark"
                         type="button" id="all">All Items</button>
                 </div>
-                {/* </div>
-
-
-                <div className="col-4 "> */}
+               
                 <div className="input-group-append mb-d m-2 p-2 flex-wrap">
                     <button
                         onClick={props.updateButtonsView}
                         className="btn btn-warning border border-dark"
                         type="button" id="completed">Completed</button>
-                    {/* </div> */}
-
+                  
                     <div className="input-group mb-d m-2 p-2">
                         <button
                             onClick={props.updateButtonsView}
@@ -149,7 +135,6 @@ export default function Input(props) {
                             className="btn btn-dark border border-dark"
                             type="button" id="allItems">Check All</button>
                     </div>
-
 
 
                     <div className="input-group mb-d m-2 p-2">

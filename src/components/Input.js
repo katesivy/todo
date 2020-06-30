@@ -1,6 +1,6 @@
 import React from 'react';
 import ItemList from './ItemList';
-import Buttons from './Buttons';
+// import Buttons from './Buttons';
 
 class Input extends React.Component {
     constructor(props) {
@@ -10,7 +10,9 @@ class Input extends React.Component {
             view: 'all',
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-
+        this.clearAll = this.clearAll.bind(this)
+        this.updateButtonsView = this.updateButtonsView.bind(this)
+        this.handleCheckAll = this.handleCheckAll.bind(this)
     }
 
     handleSubmit(e) {
@@ -95,84 +97,67 @@ class Input extends React.Component {
     render() {
         return (
             <>
-                <div className="row text-center ">
-
-                    <div className="col-6 offset-3 p-5">
+                <div className="row text-center bg-info">
+                    <div className="col-6 offset-3 p-5 ">
                         <h1>To Do List</h1>
                     </div>
-                    </div>
-                    <div className="row text-center ">
+                </div>
 
-                    <div className="col-6 offset-3 text-center">
-                            <form onSubmit={(e) => this.handleSubmit(e)}>
-                                <input
-                                    value={this.state.value}
-                                    id="itemField"
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="type to do item"
-                                    aria-label="text"
-                                    onChange={this.handleChange} />
-                                <button className="btn btn-danger"
-                                    type="submit"
-                                    id="button-addon">Add Item</button>
-
-
-                            </form>
-                            <ItemList
-                                todoList={this.state.todoList}
-                                parentFunction={this.handleCheck.bind(this)}
-                                view={this.state.view}
-                            />
-                    
+                <div className="row d-flex p-2 text-center bg-light">
+                    <div className="col-8 offset-2 p-2">
+                        <button
+                            onClick={this.updateButtonsView}
+                            className="btn btn-primary border border-dark p-2 m-2"
+                            type="button" id="all">All Items</button>
+                        <button
+                            onClick={this.updateButtonsView}
+                            className="btn btn-primary border border-dark p-2 m-2"
+                            type="button" id="completed">Completed</button>
+                        <button
+                            onClick={this.updateButtonsView}
+                            className="btn btn-primary border border-dark p-2 m-2"
+                            type="button" id="remaining">Remaining</button>
+                        <button
+                            onClick={this.handleCheckAll}
+                            className="btn btn-primary border border-dark p-2 m-2"
+                            type="button" id="allItems">Check All</button>
+                        <button
+                            onClick={this.clearAll}
+                            className="btn btn-primary border border-dark p-2 m-2"
+                            type="button" id="button-addon3">Clear All</button>
                     </div>
                 </div>
-                
-                <Buttons parentFunction={this.clearAll.bind(this)}
-                    updateButtonsView={this.updateButtonsView.bind(this)}
-                    handleCheckAll={this.handleCheckAll.bind(this)}
-                />
+
+                <div className="row text-center bg-light">
+                    <div className="col-6 offset-3 text-center  p-5">
+                        <form onSubmit={(e) => this.handleSubmit(e)}>
+                            <input
+                                value={this.state.value}
+                                id="itemField"
+                                type="text"
+                                className="form-control"
+                                placeholder="type to do item"
+                                aria-label="text"
+                                onChange={this.handleChange} />
+                            <button className="btn btn-dark p-2 m-2"
+                                type="submit"
+                                id="button-addon">Add Item</button>
+                        </form>
+
+                        <ItemList
+                            todoList={this.state.todoList}
+                            parentFunction={this.handleCheck.bind(this)}
+                            view={this.state.view}
+                        />
+
+                    </div>
+                </div>
 
             </>
         )
     }
 
-
-
-
-
-    // here or in <ItemList>: display each newItem in todoList
-
-    // create way to cross off items; change value/id/completed?
-
-    // toggle function to show/hide crossed off items
-
 }
 
 
 export default Input;
-
-
-    // const styles = StyleSheet.create({
-    //     lineThrough:  {
-    //     textDecoration: 'line-through',
-    //     textDecorationStyle: 'solid',
-    //     textDecorationColor: 'grey',
-    // }  
-    // })
-
-
-
-/*
-- take items from input
-->hide previous item from input field
-- put in local storage
-- take items from local storage and make them display in a list
--> cross off items in the list
-    *click button next to item-->toggle the isCompleted state
-    *strike out item onclick
--> show or hide certain items (filter)
-    *click for all items: show all
-    *click for completed items: show completed (state=isCompleted)
-    *click for remaining items: show remaining  (state=!isCompleted)
-*/

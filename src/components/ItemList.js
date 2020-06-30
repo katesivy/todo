@@ -5,12 +5,7 @@ class ItemList extends React.Component {
         super(props);
     }
 
-    // create proxy array []
-    // if this.props.view == all, set proxy array to this.props.todoList
-    // if vew == remaining, set proxy to filtered array of this.props.todolist
-
     render() {
-
 
         let newArray = this.props.todoList;
 
@@ -23,17 +18,16 @@ class ItemList extends React.Component {
         }
         console.log(newArray)
 
-
-    // change props to proxy array in map below
         let list = newArray.map((item, index) => {
             return <div key={item.id} >
                 <input type="checkbox"
                     className="checkbox"
-                    value={item.text}
+                    value=""
+                    defaultValue=""
                     checked={item.status}
                     id={item.id}
                     onClick={this.props.parentFunction} />
-                <><span className="col-12 justify-content-start bg-light">
+                <><span className=" justify-content-start bg-light border border-primary  m-3">
                     {item.text}
                 </span>
                 </>
@@ -41,24 +35,17 @@ class ItemList extends React.Component {
         });
 
         return (
-
-          
                 <div className="row  justify-content-start">
-                    <div className="col-12 justify-content-start">
+                    <div className=" justify-content-start">
                         <ul >
-                            {list}
+                           <div className="">{list}</div>
                         </ul>
                     </div>
                 </div>
-
           
         )
     }
-
-
-
 }
 
 
 export default ItemList;
-// {() => {console.log("checked")}}
