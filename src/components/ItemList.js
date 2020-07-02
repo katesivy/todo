@@ -20,29 +20,36 @@ class ItemList extends React.Component {
 
         let list = newArray.map((item, index) => {
             return <div key={item.id} >
-                <input type="checkbox"
-                    className="checkbox"
-                    value=""
-                    defaultValue=""
-                    checked={item.status}
-                    id={item.id}
-                    onClick={this.props.parentFunction} />
-                <><span className=" justify-content-start bg-light border border-primary  m-3">
-                    {item.text}
-                </span>
-                </>
+
+                <table className="table table-striped text-light text-left border border-light">
+                    <tbody>
+                        <tr>
+                            {/* <th scope="col"> */}
+                            <td>
+                                <input type="checkbox"
+                                    className="checkbox m-3  "
+                                    value=""
+                                    defaultValue=""
+                                    checked={item.status}
+                                    id={item.id}
+                                    onClick={this.props.parentFunction} />
+                                     {item.text}</td>
+                            {/* </th> */}
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         });
 
         return (
-                <div className="row  justify-content-start">
-                    <div className=" justify-content-start">
-                        <ul >
-                           <div className="">{list}</div>
-                        </ul>
+            <>
+                <div className="container justify-content-start  ">
+                    <div className="  justify-content-start">
+                        {list}
                     </div>
                 </div>
-          
+
+            </>
         )
     }
 }

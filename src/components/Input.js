@@ -97,62 +97,65 @@ class Input extends React.Component {
     render() {
         return (
             <>
-                <div className="row text-center bg-info">
-                    <div className="col-6 offset-3 p-5 ">
-                        <h1>To Do List</h1>
+                <div className="container bg bg-secondary p-5 ">
+               
+                    <div className="row text-center bg-secondary">
+                        <div className="col-lg-6 offset-lg-3 col-sm-12 offset-sm-0 p-5 ">
+                            <h1>My To-Do List</h1>
+                        </div>
                     </div>
-                </div>
 
-                <div className="row d-flex p-2 text-center bg-light">
-                    <div className="col-8 offset-2 p-2">
-                        <button
-                            onClick={this.updateButtonsView}
-                            className="btn btn-primary border border-dark p-2 m-2"
-                            type="button" id="all">All Items</button>
-                        <button
-                            onClick={this.updateButtonsView}
-                            className="btn btn-primary border border-dark p-2 m-2"
-                            type="button" id="completed">Completed</button>
-                        <button
-                            onClick={this.updateButtonsView}
-                            className="btn btn-primary border border-dark p-2 m-2"
-                            type="button" id="remaining">Remaining</button>
-                        <button
-                            onClick={this.handleCheckAll}
-                            className="btn btn-primary border border-dark p-2 m-2"
-                            type="button" id="allItems">Check All</button>
-                        <button
-                            onClick={this.clearAll}
-                            className="btn btn-primary border border-dark p-2 m-2"
-                            type="button" id="button-addon3">Clear All</button>
+                    <div className="row d-flex p-2 text-center bg-secondary">
+                        <div className="col-lg-8 offset-lg-2 col-sm-12 offset-sm-0 p-2">
+                            <button
+                                onClick={this.updateButtonsView}
+                                className="btn btn-light bg bg-dark border border-light text-light p-2 m-2"
+                                type="button" id="all">All Items</button>
+                            <button
+                                onClick={this.updateButtonsView}
+                                className="btn btn-lightbg bg-dark border border-light text-light p-2 m-2"
+                                type="button" id="completed">Completed</button>
+                            <button
+                                onClick={this.updateButtonsView}
+                                className="btn btn-light bg bg-dark border border-light text-light p-2 m-2"
+                                type="button" id="remaining">Remaining</button>
+                            <button
+                                onClick={this.handleCheckAll}
+                                className="btn btn-light bg bg-dark border border-light text-light  p-2 m-2"
+                                type="button" id="allItems">Check All</button>
+                            <button
+                                onClick={this.clearAll}
+                                className="btn btn-light bg bg-dark border border-light text-light p-2 m-2"
+                                type="button" id="button-addon3">Clear All</button>
+                        </div>
                     </div>
-                </div>
 
-                <div className="row text-center bg-light">
-                    <div className="col-6 offset-3 text-center  p-5">
-                        <form onSubmit={(e) => this.handleSubmit(e)}>
-                            <input
-                                value={this.state.value}
-                                id="itemField"
-                                type="text"
-                                className="form-control"
-                                placeholder="type to do item"
-                                aria-label="text"
-                                onChange={this.handleChange} />
-                            <button className="btn btn-dark p-2 m-2"
-                                type="submit"
-                                id="button-addon">Add Item</button>
-                        </form>
+                    <div className="row text-center bg-secondary">
+                        <div className="offset-lg-3 offset-sm-0 col-lg-6 col-sm-12 text-center border border-light p-5 justify-content-start ">
+                            <form onSubmit={(e) => this.handleSubmit(e)}>
+                                <input
+                                    value={this.state.value}
+                                    id="itemField"
+                                    type="text"
+                                    className="form-control border border-light col-sm-12 "
+                                    placeholder="type to do item"
+                                    aria-label="text"
+                                    onChange={this.handleChange} />
+                                <button className="btn btn-dark p-2 m-2 border border-light"
+                                    type="submit"
+                                    id="button-addon">Add Item</button>
+                            </form>
 
-                        <ItemList
-                            todoList={this.state.todoList}
-                            parentFunction={this.handleCheck.bind(this)}
-                            view={this.state.view}
-                        />
+                            <ItemList
+                                todoList={this.state.todoList}
+                                parentFunction={this.handleCheck.bind(this)}
+                                view={this.state.view}
+                            />
 
+                        </div>
                     </div>
-                </div>
-
+</div>
+                
             </>
         )
     }
