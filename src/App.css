@@ -1,11 +1,16 @@
- /* .App {
-  background-image: "https://images.unsplash.com/photo-1583162692081-64c75353a270?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1885&q=80";
+ /* #container {
+  background-image: "https://images.unsplash.com/photo-1523189442169-eaf5a86b3306?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80";
+ 
+} */
+ /* #appbg {
+  background-image: "https://images.unsplash.com/photo-1523189442169-eaf5a86b3306?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80";
  
 } */
 
-/* .Title {
-  background-color: darkseagreen;
-} */ 
+#title {
+  font-family: Apple Chancery, cursive;
+  font-style: oblique;
+} 
 /* 
 {Item.id}.map(({item} ) =>
         key=

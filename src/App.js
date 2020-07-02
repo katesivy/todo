@@ -9,11 +9,11 @@ export default function App() {
 
   return (
     <>
-      <div className="App bg bg-secondary">
-      <div class="jumbotron">
-        <Input />
-                   
-                    </div>
+      <div className="App bg bg-secondary ">
+        {/* <div class="jumbotron"> */}
+          <Input />
+
+        {/* </div> */}
       </div>
     </>
 
